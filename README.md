@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# Next JS Ecommerce App
 
-First, run the development server:
+</div>
 
+## About
+This is a simple calculator app
+
+# Contribution Guidelines
+
+When contributing to `Next JS Ecommerce App`, whether on GitHub or in other community spaces:
+
+- Be respectful, civil, and open-minded.
+- Before opening a new pull request, try searching through the [issue tracker](https://github.com/IBK2024/next-js-ecommerce-app/issues) for known issues or fixes.
+- If you want to make code changes based on your personal opinion(s), make sure you open an issue first describing the changes you want to make, and open a pull request only when your suggestions get approved by maintainers.
+
+## How to Contribute
+
+### Prerequisites
+
+To not waste your time implementing a change that has already been declined, or is generally not needed, start by [opening an issue](https://github.com/IBK2024/next-js-ecommerce-app/issues/new/choose) describing the problem you would like to solve.
+Also to modify the code you will need to install node to check:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+  node -v
 ```
+It should return the node version if node is installed. The project uses version 21.7.1 and higher.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Setup your environment locally
+- First, you will need to create a fork of the repository.
+- Then clone the forked repository using the command but replacing `repository` with the URL of the forked repository:
+  ```bash
+  git clone <repository>
+  cd <repository>
+  ```
+- Then you will need to install dependencies:
+  ```bash
+  pnpm install
+  ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Implement your changes
+Some commands to know. Make sure to activate the virtual environment first:
+- To run the application in development mode:
+  ```bash
+  pnpm dev
+  ```
+- To build the application:
+  ```bash
+  pnpm build
+  ```
+- To run the application:
+  ```bash
+  pnpm start
+  ```
+- To lint the application:
+  ```bash
+  pnpm lint
+  ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### When your done
+Create a pull request
