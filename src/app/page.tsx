@@ -1,4 +1,10 @@
+import HeroSection from "./features/heroSection";
+
 // !Home page
 export default function Home() {
-  return <div />;
+  return (
+    <div>
+      <HeroSection />
+    </div>
+  );
 }
