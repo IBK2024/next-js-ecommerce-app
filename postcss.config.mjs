@@ -2,9 +2,9 @@
 
 // !Postcss config
 const config = {
-	plugins: {
-		tailwindcss: {},
-	},
+  plugins: {
+    tailwindcss: {},
+  },
 };
 
 export default config;
