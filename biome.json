@@ -36,7 +36,15 @@
         "useImportExtensions": "off"
       },
       "suspicious": {
-        "noReactSpecificProps": "off"
+        "noReactSpecificProps": "off",
+        "noArrayIndexKey": "off",
+        "noMisplacedAssertion": "off"
+      },
+      "a11y": {
+        "useSemanticElements": "off"
+      },
+      "performance": {
+        "useTopLevelRegex": "off"
       }
     }
   },
@@ -74,6 +82,11 @@
       "bracketSameLine": false,
       "quoteProperties": "asNeeded",
       "semicolons": "always"
-    }
+    },
+    "globals": [
+      "it",
+      "expect",
+      "describe"
+    ]
   }
 }

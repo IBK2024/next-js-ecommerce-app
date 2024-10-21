@@ -1,8 +1,8 @@
 import Navbar from "@/features/navbar";
+import "@/styles/globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { type ReactNode, StrictMode } from "react";
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,11 +21,12 @@ interface Props {
 
 // !Root layout
 export default function RootLayout({ children }: Readonly<Props>) {
+  const navbarLinks = [{ name: "Tees", href: "/" }];
   return (
     <html lang="en">
       <body className={`${montserrat.className}`}>
         <StrictMode>
-          <Navbar />
+          <Navbar links={navbarLinks} />
           {children}
         </StrictMode>
       </body>

@@ -6,7 +6,7 @@ import navbarLogo from "../assets/navbar logo.png";
 export default function NavbarLogo() {
   return (
     <Link href="/" className="aspect-[117/36] h-full">
-      <Image src={navbarLogo} alt="Navbar logo" style={{ objectFit: "cover" }} />
+      <Image width={0} height={0} src={navbarLogo} objectFit="cover" alt="Navbar logo" />
     </Link>
   );
 }
