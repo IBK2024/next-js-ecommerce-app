@@ -22,50 +22,58 @@ describe("Navbar", () => {
     return {
       links: links,
       buttons: buttons,
-      loginButton: buttons[0],
-      callToActionButton: buttons[1],
-      mockNavbarLinks: mockNavbarLinks,
+      loginButtons: [buttons[0], buttons[2]],
+      callToActionButtons: [buttons[1], buttons[3]],
     };
   };
 
   // !Check that the navbar has the correct number of buttons
-  it("should have two buttons", () => {
+  it("should have four buttons", () => {
     const { buttons } = renderComponent();
-    expect(buttons).toHaveLength(2);
+    expect(buttons).toHaveLength(4);
   });
 
   // !Check that the navbar has the correct number of links
-  it(`should have ${mockNavbarLinks.length + 1} links`, () => {
+  it(`should have ${mockNavbarLinks.length * 2 + 1} links`, () => {
     const { links } = renderComponent();
-    expect(links).toHaveLength(mockNavbarLinks.length + 1);
+    expect(links).toHaveLength(mockNavbarLinks.length * 2 + 1);
   });
 
   // !Check that the links are rendered correctly
   it("should render links correctly", () => {
-    const { links, mockNavbarLinks } = renderComponent();
+    const { links } = renderComponent();
 
     links.slice(1).forEach((link, i) => {
       expect(link).toBeInTheDocument();
-      expect(link).toHaveTextContent(mockNavbarLinks[i].name);
-      expect(link).toHaveAttribute("href", mockNavbarLinks[i].href);
+      if (i > mockNavbarLinks.length - 1) {
+        expect(link).toHaveTextContent(mockNavbarLinks[i - mockNavbarLinks.length].name);
+        expect(link).toHaveAttribute("href", mockNavbarLinks[i - mockNavbarLinks.length].href);
+      } else {
+        expect(link).toHaveTextContent(mockNavbarLinks[i].name);
+        expect(link).toHaveAttribute("href", mockNavbarLinks[i].href);
+      }
     });
   });
 
   // !Check that call to action button was rendered
-  it("should render call to action button", () => {
-    const { callToActionButton } = renderComponent();
+  it("should render two call to action buttons", () => {
+    const { callToActionButtons } = renderComponent();
 
-    expect(callToActionButton).toBeInTheDocument();
-    expect(callToActionButton).toHaveTextContent(/shop now/i);
-    expect(callToActionButton).toHaveAttribute("href", "/categories");
+    callToActionButtons.forEach((callToActionButton) => {
+      expect(callToActionButton).toBeInTheDocument();
+      expect(callToActionButton).toHaveTextContent(/shop now/i);
+      expect(callToActionButton).toHaveAttribute("href", "/categories");
+    });
   });
 
   // !Check that login button was rendered
-  it("should render login button", () => {
-    const { loginButton } = renderComponent();
+  it("should render two login buttons", () => {
+    const { loginButtons } = renderComponent();
 
-    expect(loginButton).toBeInTheDocument();
-    expect(loginButton).toHaveTextContent(/login/i);
-    expect(loginButton).toHaveAttribute("href", "/login");
+    loginButtons.forEach((loginButton) => {
+      expect(loginButton).toBeInTheDocument();
+      expect(loginButton).toHaveTextContent(/login/i);
+      expect(loginButton).toHaveAttribute("href", "/login");
+    });
   });
 });

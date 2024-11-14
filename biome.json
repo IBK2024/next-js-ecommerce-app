@@ -45,6 +45,9 @@
       },
       "performance": {
         "useTopLevelRegex": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
       }
     }
   },

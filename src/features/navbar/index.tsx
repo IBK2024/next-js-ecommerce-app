@@ -2,6 +2,7 @@ import NavbarActionButton from "./components/navbarActionButton";
 import NavbarLink from "./components/navbarLink";
 import NavbarLoginButton from "./components/navbarLoginButton";
 import NavbarLogo from "./components/navbarLogo";
+import ResponsiveDropdownMenu from "./components/responsiveDropdownMenu";
 
 // !Props
 interface Props {
@@ -13,7 +14,7 @@ function Navbar({ links }: Props) {
   return (
     <nav className="flex h-navbarHeight w-screen items-center justify-around bg-tertiary px-4 py-1 text-primary *:w-fit">
       <NavbarLogo />
-      <div className="flex items-center">
+      <div className="hidden items-center sm:flex">
         {links
           ? links.map((link, i) => (
               <NavbarLink key={i} href={link.href}>
@@ -22,10 +23,13 @@ function Navbar({ links }: Props) {
             ))
           : null}
       </div>
-      <div className="flex items-center justify-center *:mx-3">
+      <div className="hidden items-center justify-center *:mx-3 sm:flex">
         <NavbarLoginButton />
         <NavbarActionButton />
       </div>
+
+      {/* Responsive design */}
+      <ResponsiveDropdownMenu links={links} />
     </nav>
   );
 }

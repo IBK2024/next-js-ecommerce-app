@@ -3,10 +3,13 @@ import Link from "next/link";
 // !Hero section
 function HeroSection() {
   return (
-    <div className="flex h-heroHeight w-screen flex-col items-center justify-center bg-tertiary *:text-primary">
-      <h1 className="font-bold text-5xl uppercase">Amazing Products at affordable prices</h1>
-      <p className="text-lg leading-relaxed">Discover the latest products from our store now!</p>
-      <Link href="/categories" className="rounded-full bg-secondary px-4 py-2 font-bold text-primary hover:opacity-90">
+    <div className="flex h-heroHeight w-screen flex-col items-center justify-center bg-tertiary *:text-center *:text-primary">
+      <h1 className="font-bold text-heroHeading uppercase">Amazing Products at affordable prices</h1>
+      <p className="text-heroSubheading leading-relaxed">Discover the latest products from our store now!</p>
+      <Link
+        href="/categories"
+        className="rounded-full bg-secondary px-4 py-2 font-bold text-primary hover:opacity-90 sm:px-6 sm:py-4"
+      >
         Shop Now
       </Link>
     </div>
