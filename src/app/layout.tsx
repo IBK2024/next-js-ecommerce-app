@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   icons: [{ url: "/icons/favicon.ico", sizes: "48x48", type: "" }],
 };
 
-// !Google Fonts
+// !Google fonts
 const montserrat = Montserrat({
   subsets: ["latin"],
 });
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
         <StrictMode>
           <Navbar links={navbarLinks} />
           {children}
-          <Footer />
+          <Footer links={navbarLinks} />
         </StrictMode>
       </body>
     </html>

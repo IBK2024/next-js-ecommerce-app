@@ -19,7 +19,7 @@ const config: Config = {
         tertiary: "#3030fc",
       },
       fontSize: {
-        heroHeading: "clamp(1rem, 3vw + 1rem, 12rem)",
+        heroHeading: "clamp(1rem, 2.5vw + 1rem, 12rem)",
         heroSubheading: "clamp(0.875rem, 1vw + 0.875rem, 2.5rem)",
         notFoundHeading: "clamp(4.5rem, 18vw + 1rem, 15rem)",
       }

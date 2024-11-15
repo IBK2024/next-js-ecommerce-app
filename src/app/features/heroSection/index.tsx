@@ -8,7 +8,7 @@ function HeroSection() {
       <p className="text-heroSubheading leading-relaxed">Discover the latest products from our store now!</p>
       <Link
         href="/categories"
-        className="rounded-full bg-secondary px-4 py-2 font-bold text-primary hover:opacity-90 sm:px-6 sm:py-4"
+        className="rounded-full bg-secondary px-3 py-1 font-bold text-primary hover:opacity-90 sm:px-5 sm:py-3"
       >
         Shop Now
       </Link>

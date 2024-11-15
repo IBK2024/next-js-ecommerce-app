@@ -55,7 +55,7 @@ describe("Navbar", () => {
     });
   });
 
-  // !Check that call to action button was rendered
+  // !Check that the call to action buttons were rendered
   it("should render two call to action buttons", () => {
     const { callToActionButtons } = renderComponent();
 
@@ -66,7 +66,7 @@ describe("Navbar", () => {
     });
   });
 
-  // !Check that login button was rendered
+  // !Check that the login buttons were rendered
   it("should render two login buttons", () => {
     const { loginButtons } = renderComponent();
 

@@ -1,4 +1,4 @@
-name: Tesr the codebase
+name: Test the codebase
 
 on:
   push:

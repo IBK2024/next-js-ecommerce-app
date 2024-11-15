@@ -1,6 +1,6 @@
 import HeroSection from "./features/heroSection";
 
-// !Generate Metadata
+// !Generate metadata
 export function generateMetadata() {
   return {
     title: "Home - Blue Store",
@@ -13,6 +13,7 @@ export default function Home() {
   return (
     <div>
       <HeroSection />
+      <p>Home page content...</p>
     </div>
   );
 }
