@@ -6,7 +6,7 @@ import Link from "next/link";
 function FooterLogo() {
   return (
     <Link href="/" className="block aspect-[117/36] w-1/2">
-      <Image width={0} height={0} src={footerLogo} objectFit="cover" alt="Footer logo" />
+      <Image width={0} height={0} src={footerLogo} className="object-cover" alt="Footer logo" />
     </Link>
   );
 }

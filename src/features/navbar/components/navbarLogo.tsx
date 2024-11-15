@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function NavbarLogo() {
   return (
     <Link href="/" className="block aspect-[117/36] h-full">
-      <Image width={0} height={0} src={navbarLogo} objectFit="cover" alt="Navbar logo" />
+      <Image width={0} height={0} src={navbarLogo} className="object-cover" priority alt="Navbar logo" />
     </Link>
   );
 }

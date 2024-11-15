@@ -16,7 +16,7 @@ function ResponsiveDropdownMenuToggleButton() {
         onClick={() => setToggle(true)}
         width={0}
         height={0}
-        objectFit="cover"
+        className="object-cover"
       />
     </div>
   );

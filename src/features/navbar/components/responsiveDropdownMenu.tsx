@@ -32,8 +32,7 @@ function ResponsiveDropdownMenu({ links }: Props) {
           onClick={() => setToggle(false)}
           width={0}
           height={0}
-          objectFit="cover"
-          className="absolute top-2 right-2"
+          className="absolute top-2 right-2 object-cover"
         />
         <ul className="text-center *:my-2">
           {links
