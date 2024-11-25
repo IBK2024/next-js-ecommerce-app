@@ -1,12 +1,11 @@
 "use client";
 import { useNavbarContext } from "@/features/navbar/context/navbarContext";
-import Image from "next/image";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { twMerge } from "tailwind-merge";
-import closeButton from "../assets/icons/cancel.svg";
 import NavbarActionButton from "./navbarActionButton";
 import NavbarLink from "./navbarLink";
 import NavbarLoginButton from "./navbarLoginButton";
-import ResponsiveDropdownMenuToggleButton from "./responsiveDropdownMenuToggleButton";
 
 // !Props
 interface Props {
@@ -18,22 +17,14 @@ function ResponsiveDropdownMenu({ links }: Props) {
   const { toggle, setToggle } = useNavbarContext();
   return (
     <div>
-      <ResponsiveDropdownMenuToggleButton />
+      <FontAwesomeIcon icon={faBars} onClick={() => setToggle(true)} />
       <div
         className={twMerge(
           "fixed top-0 left-0 flex h-0 w-full items-center justify-center overflow-hidden bg-tertiary transition-all duration-1000",
           toggle ? "h-screen p-5" : "h-0",
         )}
       >
-        <Image
-          priority={true}
-          src={closeButton}
-          alt="close button"
-          onClick={() => setToggle(false)}
-          width={0}
-          height={0}
-          className="absolute top-2 right-2 object-cover"
-        />
+        <FontAwesomeIcon icon={faX} onClick={() => setToggle(false)} className="absolute top-2 right-2" />
         <ul className="text-center *:my-2">
           {links
             ? links.map((link, i) => (

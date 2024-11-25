@@ -1,20 +1,20 @@
 import Categories from "@/features/categories";
-import HeroSection from "./features/heroSection";
 
 // !Generate metadata
 export function generateMetadata() {
   return {
-    title: "Home - Blue Store",
+    title: "Categories - Blue Store",
     description: "Discover the latest products at Blue Store",
   };
 }
 
-// !Home page
-export default function Home() {
+// !Categories page
+function CategoriesPage() {
   return (
-    <div>
-      <HeroSection />
+    <div className="min-h-[80vh]">
       <Categories />
     </div>
   );
 }
+
+export default CategoriesPage;

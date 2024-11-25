@@ -1,9 +1,14 @@
 import Footer from "@/features/footer";
 import Navbar from "@/features/navbar";
 import "@/styles/globals.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { type ReactNode, StrictMode } from "react";
+
+// !Enable font-awesome to work
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   description: "A simple and modern e-commerce app built with Next.js",
