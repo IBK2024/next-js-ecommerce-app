@@ -7,7 +7,7 @@ export default class CategoriesService {
       {
         id: 1,
         name: "T-shirt",
-        image: `http://localhost:8080${categoriesImage.src}`,
+        image: `http://localhost:8080${categoriesImage}`,
         numberOfItems: 10,
         description: "A comfortable cotton t-shirt",
       },
