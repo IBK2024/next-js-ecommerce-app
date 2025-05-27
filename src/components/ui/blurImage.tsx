@@ -12,8 +12,19 @@ interface Props {
 
 // !Image component with blur placeholder for dynamic images
 async function BlurImage({ alt = "image", src, ...props }: Props) {
-  const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
-  const { base64 } = await getPlaiceholder(buffer);
+  let base64 = "";
+  try {
+    const buffer = await fetch(src).then(async (res) =>
+      Buffer.from(await res.arrayBuffer())
+    );
+    const result = await getPlaiceholder(buffer);
+    base64 = result.base64;
+  } catch (error) {
+    console.warn(
+      "⚠️ Failed to generate blurDataURL:",
+      error instanceof Error ? error.message : String(error)
+    );
+  }
 
   return (
     <Image
