@@ -14,7 +14,7 @@ export function generateMetadata() {
 // !Categories page
 function CategoriesPage() {
   return (
-    <div>
+    <div data-cy="categories">
       <Heading>Categories</Heading>
       <Suspense fallback={<CategoriesLoadingSkeleton />}>
         <Categories />
