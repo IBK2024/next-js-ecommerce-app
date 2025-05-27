@@ -28,7 +28,7 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
-      - name: Lint the code using biome
+      - name: Run unit tests
         run: pnpm test
   test-e2e:
     name: Test E2E
@@ -58,4 +58,4 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           start: pnpm start
-          wait-on: "http://localhost:8080"
+          browser: chrome
