@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         pnpm-version: [9]
-        node-version: [21, 22]
+        node-version: [21.x, 22.x]
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{matrix.os}}
     steps:
