@@ -86,10 +86,6 @@
       "quoteProperties": "asNeeded",
       "semicolons": "always"
     },
-    "globals": [
-      "it",
-      "expect",
-      "describe"
-    ]
+    "globals": ["it", "expect", "describe", "vi"]
   }
 }

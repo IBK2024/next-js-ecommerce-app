@@ -12,3 +12,6 @@ tsconfig.tsbuildinfo
 
 # !Editor files
 /.vscode
+
+# !Testing files
+/coverage

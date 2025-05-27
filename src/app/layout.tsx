@@ -1,17 +1,14 @@
-import Footer from "@/features/footer";
-import Navbar from "@/features/navbar";
-import "@/styles/globals.css";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
+import "@/assets/styles/globals.css";
+import Footer from "@/components/layouts/footer";
+import Navbar from "@/components/layouts/navbar";
+import { description } from "@/config/constants";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { type ReactNode, StrictMode } from "react";
 
-// !Enable font-awesome to work
-config.autoAddCss = false;
-
+// !Metadata
 export const metadata: Metadata = {
-  description: "A simple and modern e-commerce app built with Next.js",
+  description: description,
   icons: [{ url: "/icons/favicon.ico", sizes: "48x48", type: "" }],
 };
 
@@ -28,13 +25,15 @@ interface Props {
 // !Root layout
 export default function RootLayout({ children }: Readonly<Props>) {
   const navbarLinks = [{ name: "Tees", href: "/" }];
+  const footerLinks = [{ name: "Tees", href: "/" }];
+
   return (
     <html lang="en">
       <body className={`${montserrat.className}`}>
         <StrictMode>
           <Navbar links={navbarLinks} />
           {children}
-          <Footer links={navbarLinks} />
+          <Footer links={footerLinks} about={description} />
         </StrictMode>
       </body>
     </html>

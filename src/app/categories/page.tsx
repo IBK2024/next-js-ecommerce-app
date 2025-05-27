@@ -1,4 +1,7 @@
+import Heading from "@/components/ui/heading";
 import Categories from "@/features/categories";
+import CategoriesLoadingSkeleton from "@/features/categories/components/categoriesLoadingSkeleton";
+import { Suspense } from "react";
 
 // !Generate metadata
 export function generateMetadata() {
@@ -11,8 +14,11 @@ export function generateMetadata() {
 // !Categories page
 function CategoriesPage() {
   return (
-    <div className="min-h-[80vh]">
-      <Categories />
+    <div>
+      <Heading>Categories</Heading>
+      <Suspense fallback={<CategoriesLoadingSkeleton />}>
+        <Categories />
+      </Suspense>
     </div>
   );
 }

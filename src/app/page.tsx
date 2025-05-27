@@ -1,5 +1,8 @@
+import Heading from "@/components/ui/heading";
 import Categories from "@/features/categories";
-import HeroSection from "./features/heroSection";
+import CategoriesLoadingSkeleton from "@/features/categories/components/categoriesLoadingSkeleton";
+import { Suspense } from "react";
+import HeroSection from "../components/ui/heroSection";
 
 // !Generate metadata
 export function generateMetadata() {
@@ -10,11 +13,18 @@ export function generateMetadata() {
 }
 
 // !Home page
-export default function Home() {
+function Home() {
   return (
-    <div>
+    <>
       <HeroSection />
-      <Categories />
-    </div>
+      <div data-cy="categories">
+        <Heading>Categories</Heading>
+        <Suspense fallback={<CategoriesLoadingSkeleton />}>
+          <Categories />
+        </Suspense>
+      </div>
+    </>
   );
 }
+
+export default Home;

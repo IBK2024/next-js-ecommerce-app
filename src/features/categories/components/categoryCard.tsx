@@ -1,41 +1,38 @@
-import type { CategoriesType } from "@/types/categories";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Image from "next/image";
+import BlurImage from "@/components/ui/blurImage";
+import type { CategoryType } from "@/features/categories/types/categoriesTypes";
 import Link from "next/link";
 
 // !Props
 interface Props {
-  category: CategoriesType;
+  category: CategoryType;
 }
 
 // !Category card
-function CategoryCard({ category }: Props) {
+function CategoryCard({ category: { name, numberOfItems, description, image } }: Props) {
   return (
-    <div className="group flex h-fit w-full flex-row items-center justify-center rounded-lg bg-secondary bg-opacity-10 p-2 transition-all duration-300 ease-in hover:scale-90 hover:cursor-pointer ">
-      <div className="relative aspect-square w-1/2">
-        <div className="absolute top-10 left-3">
-          <h1 className="mb-1 font-bold text-xl">{category.name}</h1>
-          <p className="font-normal text-sm">{category.numberOfItems} items</p>
-        </div>
-        <div className="absolute bottom-10 left-3">
-          <Link href={`/categories/${category.name}`} className="mt-4 block">
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              className="size-5 rounded-full bg-secondary p-1 text-primary transition-all group-hover:bg-tertiary"
-            />
-          </Link>
-        </div>
-      </div>
-      <div className="aspect-square w-1/2">
-        <Image
-          src={JSON.parse(JSON.stringify(require(`@/assets/images/${category.name.toLowerCase()}.png`)))}
-          alt={`${category.name} image`}
-          width={0}
-          height={0}
+    <Link
+      href={`/categories/${name.toLowerCase()}`}
+      className="group block overflow-hidden rounded-lg border-4 border-gray-200 shadow-sm transition-shadow duration-200 hover:shadow-md"
+      data-testid="category-card"
+    >
+      <div className="aspect-square overflow-hidden bg-gray-100">
+        <BlurImage
+          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          width={300}
+          height={300}
+          src={image}
+          alt={`${name} image`}
         />
       </div>
-    </div>
+      <div className="p-4" data-testid="category-card-content">
+        <h1 className="font-medium text-lg">{name}</h1>
+        <p className="text-gray-600 text-sm">
+          {description}
+          <br />
+          {numberOfItems} items
+        </p>
+      </div>
+    </Link>
   );
 }
 

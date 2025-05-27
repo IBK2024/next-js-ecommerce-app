@@ -1,6 +1,14 @@
+// !Next JS config
 /** @type {import('next').NextConfig} */
 
-// !Next JS config
-const nextConfig = {};
+const nextConfig = {
+  images: {
+    remotePatterns: [{
+      protocol: 'http',
+      hostname: 'localhost',
+      pathname: '/**'
+    }]
+  }
+};
 
 export default nextConfig;

@@ -1,18 +1,11 @@
-import { Suspense } from "react";
-import CategoriesHeading from "./components/categoriesHeading";
-import CategoryList from "./components/categoryList";
-import CategoryListSkeleton from "./skeletons/categoryListSkeleton";
+import CategoriesService from "@/features/categories/services/CategoriesService";
+import CategoriesList from "./components/categoriesList";
 
-// !Categories section
-function Categories() {
-  return (
-    <div className="bg-primary">
-      <CategoriesHeading />
-      <Suspense fallback={<CategoryListSkeleton />}>
-        <CategoryList />
-      </Suspense>
-    </div>
-  );
+async function Categories() {
+  const categoriesService = new CategoriesService();
+  const categories = await categoriesService.getCategories();
+
+  return <CategoriesList categories={categories} />;
 }
 
 export default Categories;

@@ -1,0 +1,15 @@
+# !Dependencies
+/node_modules
+
+# !Next JS
+/.next/
+
+# !Typescript
+next-env.d.ts
+tsconfig.tsbuildinfo
+
+# !Editor files
+/.vscode
+
+# !Testing files
+/coverage

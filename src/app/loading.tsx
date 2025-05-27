@@ -1,6 +1,6 @@
-import LoadingSpinner from "@/features/loadingSpinner";
+import LoadingSpinner from "@/components/ui/loadingSpinner";
 
-// !Loading UI
+// !Loading spinner
 function Loading() {
   return <LoadingSpinner />;
 }
