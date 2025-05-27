@@ -10,7 +10,6 @@ jobs:
   test-unit-and-integration:
     name: Test Unit and Integration
     strategy:
-      fail-fast: false
       matrix:
         node-version: [20, 21, 22]
         os: [ubuntu-latest, macos-latest, windows-latest]
@@ -46,6 +45,8 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
+      - name: a
+        run: pnpm config set side-effects-cache false --location project
       - name: Use node ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
