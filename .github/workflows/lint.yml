@@ -24,7 +24,7 @@ jobs:
       - name: Use node ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 18
           architecture: "x64"
           cache: "pnpm"
       - name: Install dependencies
