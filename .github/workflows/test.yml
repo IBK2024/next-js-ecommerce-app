@@ -45,13 +45,13 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 10
+          - name: Use node ${{matrix.node-version}}
+          uses: actions/setup-node@v4
+          with:
+            node-version: ${{matrix.node-version}}
+            cache: "pnpm"
       - name: a
         run: pnpm config set side-effects-cache false --location project
-      - name: Use node ${{matrix.node-version}}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{matrix.node-version}}
-          cache: "pnpm"
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
