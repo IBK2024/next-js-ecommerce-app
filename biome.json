@@ -38,7 +38,13 @@
       "suspicious": {
         "noReactSpecificProps": "off",
         "noArrayIndexKey": "off",
-        "noMisplacedAssertion": "off"
+        "noMisplacedAssertion": "off",
+        "noConsole": {
+          "level": "warn",
+          "options": {
+            "allow": ["warn", "error"]
+          }
+        }
       },
       "a11y": {
         "useSemanticElements": "off"
