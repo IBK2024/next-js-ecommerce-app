@@ -14,16 +14,11 @@ interface Props {
 async function BlurImage({ alt = "image", src, ...props }: Props) {
   let base64 = "";
   try {
-    const buffer = await fetch(src).then(async (res) =>
-      Buffer.from(await res.arrayBuffer())
-    );
+    const buffer = await fetch(src).then(async (res) => Buffer.from(await res.arrayBuffer()));
     const result = await getPlaiceholder(buffer);
     base64 = result.base64;
-  } catch (error) {
-    console.warn(
-      "⚠️ Failed to generate blurDataURL:",
-      error instanceof Error ? error.message : String(error)
-    );
+  } catch (_error) {
+    console.warn("Error fetching image placeholder:", _error);
   }
 
   return (

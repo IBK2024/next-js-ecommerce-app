@@ -11,10 +11,7 @@ interface Props {
 function CategoriesList({ categories }: Props) {
   if (categories.length === 0) {
     return (
-      <div
-        className="flex items-center justify-center"
-        data-testid="categories-section"
-      >
+      <div className="flex items-center justify-center" data-testid="categories-section">
         <p className="font-normal text-lg">No categories available</p>
       </div>
     );

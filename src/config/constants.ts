@@ -1,3 +1,4 @@
-const description = "A simple and modern e-commerce app built with Next.js";
+const siteName = "Blue store";
+const siteDescription = `${siteName} is a simple and modern e-commerce app built with Next.js`;
 
-export { description };
+export { siteDescription, siteName };

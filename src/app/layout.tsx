@@ -1,14 +1,14 @@
 import "@/assets/styles/globals.css";
 import Footer from "@/components/layouts/footer";
 import Navbar from "@/components/layouts/navbar";
-import { description } from "@/config/constants";
+import { siteDescription } from "@/config/constants";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { type ReactNode, StrictMode } from "react";
 
 // !Metadata
 export const metadata: Metadata = {
-  description: description,
+  description: siteDescription,
   icons: [{ url: "/icons/favicon.ico", sizes: "48x48", type: "" }],
 };
 
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: Readonly<Props>) {
         <StrictMode>
           <Navbar links={navbarLinks} />
           {children}
-          <Footer links={footerLinks} about={description} />
+          <Footer links={footerLinks} about={siteDescription} />
         </StrictMode>
       </body>
     </html>
