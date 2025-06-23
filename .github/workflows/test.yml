@@ -53,19 +53,12 @@ jobs:
         with:
           node-version: ${{matrix.node-version}}
           cache: "pnpm"
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install dependencies (skip scripts)
+        run: pnpm install --ignore-scripts
       - name: Generate Prisma Client
-        run: npx prisma generate
-      - name: Cache Cypress Binary
-        uses: actions/cache@v4
-        with:
-          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-
-          path: ~/.cache/Cypress
+        run: pnpm exec prisma generate
       - name: Install Cypress binary
-        run: pnpx cypress install
+        run: npx cypress install
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -73,3 +66,4 @@ jobs:
           wait-on: "http://localhost:8080"
           wait-on-timeout: 120
           browser: electron
+          install: true
