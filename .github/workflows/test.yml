@@ -14,25 +14,32 @@ jobs:
       matrix:
         node-version: [20, 21, 22]
         os: [ubuntu-latest, macos-latest, windows-latest]
+
     runs-on: ${{matrix.os}}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install pnpm version 10
         uses: pnpm/action-setup@v4
         with:
           version: 10
+
       - name: Use node ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.node-version}}
           cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install
+
       - name: Generate Prisma Client
         run: npx prisma generate
+
       - name: Run unit tests
         run: pnpm test
+
   test-e2e:
     name: Test E2E
     strategy:
@@ -44,21 +51,36 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install pnpm version 10
         uses: pnpm/action-setup@v4
         with:
           version: 10
+
       - name: Use node ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.node-version}}
           cache: "pnpm"
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
       - name: Install dependencies (skip scripts)
         run: pnpm install --ignore-scripts
+
       - name: Generate Prisma Client
         run: pnpm exec prisma generate
+
       - name: Install Cypress binary
         run: npx cypress install
+
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
@@ -66,4 +88,4 @@ jobs:
           wait-on: "http://localhost:8080"
           wait-on-timeout: 120
           browser: electron
-          install: true
+          install: false # *Prevent double install
