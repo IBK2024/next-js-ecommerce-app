@@ -66,7 +66,9 @@ jobs:
       - name: Cache Cypress binary
         uses: actions/cache@v4
         with:
-          path: ~/.cache/Cypress
+          path: |
+            ~/.cache/Cypress
+            ~/Library/Caches/Cypress
           key: cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
           restore-keys: |
             cypress-${{ runner.os }}-
@@ -78,11 +80,13 @@ jobs:
         run: pnpm exec prisma generate
 
       - name: Install Cypress binary
-        run: pnpx cypress install
+        run: npx cypress install
 
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
         with:
           start: pnpm run dev
           wait-on: "http://localhost:8080"
