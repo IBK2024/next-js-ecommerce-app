@@ -1,7 +1,7 @@
-export interface CategoryType {
-  id: number;
+export type CategoryType = {
+  id: string;
   name: string;
   image: string;
-  numberOfItems: number;
+  numberOfProducts: number;
   description: string;
-}
+};

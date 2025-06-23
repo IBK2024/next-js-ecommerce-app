@@ -1,28 +1,20 @@
 import Footer from "@/components/layouts/footer";
+import { footerLinks, siteDescription } from "@/config/constants";
 import { render, screen } from "@testing-library/react";
 import { expect } from "vitest";
 
+vi.mock("@/config/constants", () => import("@/config/__mocks__/constants"));
+
 // !Test suite for the Footer component
 describe("testing Footer component", () => {
-  // !Mock footer links
-  const mockFooterLinks = [
-    { href: "/", name: "Home" },
-    { href: "/about", name: "About" },
-    { href: "/contact", name: "Contact" },
-  ];
-
-  // !Mock about description
-  const mockAboutDescription =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
-
   // !Render component
   const renderComponent = () => {
-    render(<Footer links={mockFooterLinks} about={mockAboutDescription} />);
+    render(<Footer />);
 
     //!Get the rendered elements in the DOM
     const links = screen.getAllByTestId("footer link");
     const headings = screen.getAllByRole("heading");
-    const about = screen.getByText(mockAboutDescription);
+    const about = screen.getByText(siteDescription);
 
     // !Return the need elements
     return { links, headings, about };
@@ -48,13 +40,13 @@ describe("testing Footer component", () => {
   it("should render about description correctly", () => {
     const { about } = renderComponent();
     expect(about).toBeInTheDocument();
-    expect(about).toHaveTextContent(mockAboutDescription);
+    expect(about).toHaveTextContent(siteDescription);
   });
 
   //!Check that the correct amount of links have been rendered
-  it(`should render ${mockFooterLinks.length} links in the footer`, () => {
+  it(`should render ${footerLinks.length} links in the footer`, () => {
     const { links } = renderComponent();
-    expect(links).toHaveLength(mockFooterLinks.length);
+    expect(links).toHaveLength(footerLinks.length);
   });
 
   // !Check that links are rendered correctly
@@ -62,8 +54,8 @@ describe("testing Footer component", () => {
     const { links } = renderComponent();
     links.forEach((link, i) => {
       expect(link).toBeInTheDocument();
-      expect(link).toHaveTextContent(mockFooterLinks[i].name);
-      expect(link).toHaveAttribute("href", mockFooterLinks[i].href);
+      expect(link).toHaveTextContent(footerLinks[i].name);
+      expect(link).toHaveAttribute("href", footerLinks[i].href);
     });
   });
 });

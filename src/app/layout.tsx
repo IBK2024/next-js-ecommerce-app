@@ -18,22 +18,19 @@ const montserrat = Montserrat({
 });
 
 // !Props
-interface Props {
+type Props = {
   children: ReactNode;
-}
+};
 
 // !Root layout
 export default function RootLayout({ children }: Readonly<Props>) {
-  const navbarLinks = [{ name: "Tees", href: "/" }];
-  const footerLinks = [{ name: "Tees", href: "/" }];
-
   return (
     <html lang="en">
       <body className={`${montserrat.className}`}>
         <StrictMode>
-          <Navbar links={navbarLinks} />
+          <Navbar />
           {children}
-          <Footer links={footerLinks} about={siteDescription} />
+          <Footer />
         </StrictMode>
       </body>
     </html>

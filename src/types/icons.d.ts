@@ -1,6 +1,6 @@
 import type { MouseEventHandler } from "react";
 
-export interface IconPropsType {
+export type IconPropsType = {
   className?: string;
   onClick?: MouseEventHandler<SVGSVGElement> | undefined;
-}
+};

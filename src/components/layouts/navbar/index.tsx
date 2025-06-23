@@ -1,34 +1,41 @@
-import NavbarContextProvider from "@/components/layouts/navbar/context/navbarContext";
-import type { NavbarLinkType } from "@/components/layouts/navbar/types/navbarTypes";
+import { navbarLinks } from "@/config/constants";
+import MobileNavbarDropdownMenu from "./components/mobileNavbarDropdownMenu";
+import MobileNavbarToggleButton from "./components/mobileNavbarToggleButton";
 import NavbarActionButton from "./components/navbarActionButton";
-import NavbarLinks from "./components/navbarLinks";
+import NavbarLink from "./components/navbarLink";
 import NavbarLoginButton from "./components/navbarLoginButton";
 import NavbarLogo from "./components/navbarLogo";
-import ResponsiveDropdownMenu from "./components/responsiveDropdownMenu";
-
-// !Props
-interface Props {
-  links: NavbarLinkType[];
-}
+import NavbarContextProvider from "./context/navbarContext";
 
 // !Main navbar
-function Navbar({ links }: Props) {
+function Navbar() {
   return (
     <NavbarContextProvider>
-      <nav
-        className="flex h-navbarHeight w-full items-center justify-around bg-tertiary px-4 py-1 text-primary *:w-fit"
-        data-cy="navbar"
-      >
-        <NavbarLogo />
-        <NavbarLinks links={links} />
-        <div className="hidden items-center justify-center *:mx-3 sm:flex">
-          <NavbarLoginButton />
-          <NavbarActionButton />
-        </div>
+      <header className="relative bg-tertiary px-8">
+        <nav
+          className="mx-auto flex h-navbarHeight w-full max-w-7xl items-center justify-between text-primary"
+          data-cy="navbar"
+        >
+          <NavbarLogo />
+          <ul className="hidden items-center gap-8 lg:flex">
+            {navbarLinks.map((link, i) => (
+              <li className="mx-auto w-fit" key={i}>
+                <NavbarLink href={link.href}>{link.name}</NavbarLink>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center justify-center gap-3">
+            <NavbarLoginButton className="hidden lg:block" />
+            <NavbarActionButton className="hidden lg:block" />
 
-        {/* Responsive design */}
-        <ResponsiveDropdownMenu links={links} />
-      </nav>
+            {/* Toggles the navbar on smaller screens */}
+            <MobileNavbarToggleButton />
+          </div>
+
+          {/* Navbar dropdown menu for smaller screens */}
+          <MobileNavbarDropdownMenu />
+        </nav>
+      </header>
     </NavbarContextProvider>
   );
 }

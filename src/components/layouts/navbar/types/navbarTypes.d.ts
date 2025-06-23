@@ -1,13 +1,14 @@
 import type { Dispatch, SetStateAction } from "react";
-
-// !Navbar link type
-export interface NavbarLinkType {
-  name: string;
-  href: string;
-}
+import type { ReactNode } from "react";
 
 // !Navbar context type
-export interface NavbarContextType {
+export type NavbarContextType = {
   toggle: boolean;
   setToggle: Dispatch<SetStateAction<boolean>>;
-}
+};
+
+// !Navbar link props type
+export type NavbarLinkPropsType = {
+  href: string;
+  children: ReactNode;
+};
