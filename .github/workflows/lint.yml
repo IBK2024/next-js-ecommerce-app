@@ -28,6 +28,8 @@ jobs:
           cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: npx prisma generate
       - name: Lint the code using biome
         run: pnpm lint
   typecheck:
@@ -51,5 +53,7 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: npx prisma generate
       - name: Typecheck the code using typescript
         run: pnpm typecheck

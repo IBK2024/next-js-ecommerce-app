@@ -29,6 +29,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: npx prisma generate
       - name: Run unit tests
         run: pnpm test
   test-e2e:
@@ -53,6 +55,8 @@ jobs:
           cache: "pnpm"
       - name: Install dependencies
         run: pnpm install
+      - name: Generate Prisma Client
+        run: npx prisma generate
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
