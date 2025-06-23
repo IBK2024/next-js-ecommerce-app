@@ -78,13 +78,13 @@ jobs:
         run: pnpm exec prisma generate
 
       - name: Install Cypress binary
-        run: npx cypress install
+        run: pnpx cypress install
 
 
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          start: npm run dev
+          start: pnpm run dev
           wait-on: "http://localhost:8080"
           wait-on-timeout: 120
           browser: electron
