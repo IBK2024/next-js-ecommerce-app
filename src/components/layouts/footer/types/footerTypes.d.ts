@@ -1,4 +1,4 @@
-export interface FooterLinkType {
+export type FooterLinkType = {
   name: string;
   href: string;
-}
+};

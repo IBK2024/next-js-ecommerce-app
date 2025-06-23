@@ -8,18 +8,18 @@ vi.mock("@/components/ui/blurImage", () => import("@/components/ui/__mocks__/blu
 // !Mock categories data
 const mockCategories: CategoryType[] = [
   {
-    id: 1,
+    id: "1",
     name: "Category 1",
     description: "Description 1",
     image: "",
-    numberOfItems: 10,
+    numberOfProducts: 10,
   },
   {
-    id: 2,
+    id: "2",
     name: "Category 2",
     description: "Description 2",
     image: "",
-    numberOfItems: 20,
+    numberOfProducts: 20,
   },
 ];
 
@@ -32,7 +32,7 @@ describe("testing CategoriesList component", () => {
 
     // !Get the rendered elements in the DOM
     const categoriesSection = screen.getByTestId("categories-section");
-    const noCategoriesMessage = screen.getByRole("paragraph", {});
+    const noCategoriesMessage = screen.getByRole("paragraph");
 
     return { categoriesSection, noCategoriesMessage };
   };
@@ -90,7 +90,7 @@ describe("testing CategoriesList component", () => {
       expect(content).toBeInTheDocument();
       expect(content).toHaveTextContent(mockCategories[i].name);
       expect(content).toHaveTextContent(mockCategories[i].description);
-      expect(content).toHaveTextContent(`${mockCategories[i].numberOfItems} items`);
+      expect(content).toHaveTextContent(`${mockCategories[i].numberOfProducts} items`);
 
       // !Check that the category card has the correct image
       // !Note: The image src attribute is an empty string in the mock data

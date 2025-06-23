@@ -15,3 +15,13 @@ tsconfig.tsbuildinfo
 
 # !Testing files
 /coverage
+
+# !Env
+.env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# !Others
+/src/generated/prisma

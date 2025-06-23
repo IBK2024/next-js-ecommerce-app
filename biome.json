@@ -92,6 +92,18 @@
       "quoteProperties": "asNeeded",
       "semicolons": "always"
     },
-    "globals": ["it", "expect", "describe", "vi"]
-  }
+    "globals": ["it", "expect", "describe", "vi", "beforeEach"]
+  },
+  "overrides": [
+    {
+      "include": ["src/config/env.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "useNamingConvention": "off"
+          }
+        }
+      }
+    }
+  ]
 }

@@ -26,7 +26,7 @@ describe("testing Button component", () => {
     return { button };
   };
 
-  // TODO:Test that the button is rendered correctly with href passed as prop
+  // !Test that the button is rendered correctly with href passed as prop
   it("should render the button correctly with href", () => {
     const { button } = renderComponentWithHref();
 
@@ -35,7 +35,7 @@ describe("testing Button component", () => {
     expect(button).toHaveAttribute("href", mockButtonHref);
   });
 
-  // TODO:Test that the button is rendered correctly without href passed as prop
+  // !Test that the button is rendered correctly without href passed as prop
   it("should render the button correctly without href", () => {
     const { button } = renderComponentWithoutHref();
 
