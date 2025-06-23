@@ -58,7 +58,14 @@ jobs:
       - name: Generate Prisma Client
         run: npx prisma generate
       - name: Install Cypress binary
-        run: npx cypress install
+        run: pnpx cypress install
+      - name: Cache Cypress Binary
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
