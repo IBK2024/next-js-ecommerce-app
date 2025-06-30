@@ -9,53 +9,104 @@ on:
 jobs:
   test-unit-and-integration:
     name: Test Unit and Integration
+
     strategy:
       matrix:
-        pnpm-version: [9]
+        pnpm-version: [10]
         node-version: [21, 22]
         os: [ubuntu-latest, macos-latest, windows-latest]
+
+      fail-fast: false
+
     runs-on: ${{matrix.os}}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install pnpm version ${{matrix.pnpm-version}}
         uses: pnpm/action-setup@v4
         with:
           version: ${{matrix.pnpm-version}}
+
       - name: Use node ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.node-version}}
           cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install
-      - name: Lint the code using biome
+
+      - name: Generate prisma client
+        run: pnpm prisma generate
+
+      - name: Run unit and integration tests
         run: pnpm test
+
   test-e2e:
     name: Test E2E
+
     strategy:
       matrix:
-        pnpm-version: [9]
+        pnpm-version: [10]
         node-version: [21, 22]
         os: [ubuntu-latest, macos-latest, windows-latest]
+
+      fail-fast: false
+
     runs-on: ${{matrix.os}}
+
+    env:
+      CYPRESS_CACHE_FOLDER: ~/.cache/Cypress
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Install pnpm version ${{matrix.pnpm-version}}
         uses: pnpm/action-setup@v4
         with:
           version: ${{matrix.pnpm-version}}
-      - name: Use node ${{matrix.node-version}}
+
+      - name: Setup Node.js ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
           node-version: ${{matrix.node-version}}
           cache: "pnpm"
+
+      - name: Restore Cypress cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/Cypress
+          key: cypress-${{ runner.os }}-${{ hashFiles('pnpm-lock.yaml') }}
+          restore-keys: |
+            cypress-${{ runner.os }}-
+
+      - name: Generate .env file
+        run: echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" > .env
+
       - name: Install dependencies
         run: pnpm install
+
+      - name: Approve Cypress binary install
+        run: pnpm dlx pnpm approve-builds
+
+      - name: Install Cypress binary
+        run: pnpm exec cypress install
+
+      - name: Generate Prisma client
+        run: pnpm prisma generate
+
+      - name: Build the application with mock data
+        env:
+          NEXT_PUBLIC_USE_MOCK_DATA: true
+        run: pnpm build
+
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: pnpm build
-          build: pnpm build
           start: pnpm start
+          wait-on: 'http://localhost:8080'
+          browser: electron
+          install: false

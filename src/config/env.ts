@@ -7,9 +7,9 @@ export const env = createEnv({
     NODE_ENV: z.enum(["development", "production", "test"]),
   },
   client: {
-    NEXT_PUBLIC_USE_MOCK_SERVICE: z.enum(["true", "false"]).optional(),
+    NEXT_PUBLIC_USE_MOCK_DATA: z.enum(["true", "false"]).default("false"),
   },
   experimental__runtimeEnv: {
-    NEXT_PUBLIC_USE_MOCK_SERVICE: process.env.NEXT_PUBLIC_USE_MOCK_SERVICE,
+    NEXT_PUBLIC_USE_MOCK_DATA: process.env.NEXT_PUBLIC_USE_MOCK_DATA || "false",
   },
 });
